@@ -1,0 +1,28 @@
+--cpu=Cortex-M4.fp.sp
+"hal3\startup_stm32f407xx.o"
+"hal3\main.o"
+"hal3\gpio.o"
+"hal3\usart.o"
+"hal3\stm32f4xx_it.o"
+"hal3\stm32f4xx_hal_msp.o"
+"hal3\stm32f4xx_hal_tim.o"
+"hal3\stm32f4xx_hal_tim_ex.o"
+"hal3\stm32f4xx_hal_uart.o"
+"hal3\stm32f4xx_hal_rcc.o"
+"hal3\stm32f4xx_hal_rcc_ex.o"
+"hal3\stm32f4xx_hal_flash.o"
+"hal3\stm32f4xx_hal_flash_ex.o"
+"hal3\stm32f4xx_hal_flash_ramfunc.o"
+"hal3\stm32f4xx_hal_gpio.o"
+"hal3\stm32f4xx_hal_dma_ex.o"
+"hal3\stm32f4xx_hal_dma.o"
+"hal3\stm32f4xx_hal_pwr.o"
+"hal3\stm32f4xx_hal_pwr_ex.o"
+"hal3\stm32f4xx_hal_cortex.o"
+"hal3\stm32f4xx_hal.o"
+"hal3\stm32f4xx_hal_exti.o"
+"hal3\system_stm32f4xx.o"
+--library_type=microlib --strict --scatter "HAL3\HAL3.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "HAL3.map" -o HAL3\HAL3.axf

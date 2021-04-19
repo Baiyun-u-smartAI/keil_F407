@@ -1,0 +1,25 @@
+--cpu=Cortex-M4.fp.sp
+"myprotect\startup_stm32f407xx.o"
+"myprotect\main.o"
+"myprotect\stm32f4xx_it.o"
+"myprotect\stm32f4xx_hal_msp.o"
+"myprotect\stm32f4xx_hal_tim.o"
+"myprotect\stm32f4xx_hal_tim_ex.o"
+"myprotect\stm32f4xx_hal_rcc.o"
+"myprotect\stm32f4xx_hal_rcc_ex.o"
+"myprotect\stm32f4xx_hal_flash.o"
+"myprotect\stm32f4xx_hal_flash_ex.o"
+"myprotect\stm32f4xx_hal_flash_ramfunc.o"
+"myprotect\stm32f4xx_hal_gpio.o"
+"myprotect\stm32f4xx_hal_dma_ex.o"
+"myprotect\stm32f4xx_hal_dma.o"
+"myprotect\stm32f4xx_hal_pwr.o"
+"myprotect\stm32f4xx_hal_pwr_ex.o"
+"myprotect\stm32f4xx_hal_cortex.o"
+"myprotect\stm32f4xx_hal.o"
+"myprotect\stm32f4xx_hal_exti.o"
+"myprotect\system_stm32f4xx.o"
+--library_type=microlib --strict --scatter "myprotect\myprotect.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "myprotect.map" -o myprotect\myprotect.axf
