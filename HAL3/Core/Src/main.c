@@ -44,10 +44,10 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-static uint8_t aRxBuffer;			//æ¥æ”¶ä¸­æ–­ç¼“å†²
-static uint8_t Uart1_RxBuff[256];		//æ¥æ”¶ç¼“å†²
-static uint8_t Uart1_Rx_Cnt = 0;		//æ¥æ”¶ç¼“å†²è®¡æ•°
-static uint8_t	cAlmStr[] = "æ•°æ®æº¢å‡º(å¤§äº256)\r\n";
+static uint8_t aRxBuffer;			//½ÓÊÕÖĞ¶Ï»º³å
+static uint8_t Uart1_RxBuff[256];		//½ÓÊÕ»º³å
+static uint8_t Uart1_Rx_Cnt = 0;		//½ÓÊÕ»º³å¼ÆÊı
+static uint8_t	cAlmStr[] = "Êı¾İÒç³ö(´óÓÚ20)\r\n";
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -172,7 +172,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
            the HAL_UART_TxCpltCallback could be implemented in the user file
    */
  
-	if(Uart1_Rx_Cnt >= 255)  //æº¢å‡ºåˆ¤æ–­
+	if(Uart1_Rx_Cnt >= 20)  //Òç³öÅĞ¶Ï
 	{
 		Uart1_Rx_Cnt = 0;
 		memset(Uart1_RxBuff,0x00,sizeof(Uart1_RxBuff));
@@ -180,17 +180,17 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	}
 	else
 	{
-		Uart1_RxBuff[Uart1_Rx_Cnt++] = aRxBuffer;   //æ¥æ”¶æ•°æ®è½¬å­˜
+		Uart1_RxBuff[Uart1_Rx_Cnt++] = aRxBuffer;   //½ÓÊÕÊı¾İ×ª´æ
 	
-		if((Uart1_RxBuff[Uart1_Rx_Cnt-1] == 0x0A)&&(Uart1_RxBuff[Uart1_Rx_Cnt-2] == 0x0D)) //åˆ¤æ–­ç»“æŸä½
+		if((Uart1_RxBuff[Uart1_Rx_Cnt-1] == 0x0A)&&(Uart1_RxBuff[Uart1_Rx_Cnt-2] == 0x0D)) //ÅĞ¶Ï½áÊøÎ» windows½áÊøÎ»\n\r
 		{
-			HAL_UART_Transmit(&huart1, (uint8_t *)&Uart1_RxBuff, Uart1_Rx_Cnt,0xFFFF); //å°†æ”¶åˆ°çš„ä¿¡æ¯å‘é€å‡ºå»
+			HAL_UART_Transmit(&huart1, (uint8_t *)&Uart1_RxBuff, Uart1_Rx_Cnt,0xFFFF); //½«ÊÕµ½µÄĞÅÏ¢·¢ËÍ³öÈ¥
 			Uart1_Rx_Cnt = 0;
-			memset(Uart1_RxBuff,0x00,sizeof(Uart1_RxBuff)); //æ¸…ç©ºæ•°ç»„
+			memset(Uart1_RxBuff,0x00,sizeof(Uart1_RxBuff)); //Çå¿ÕÊı×é
 		}
 	}
 	
-	HAL_UART_Receive_IT(&huart1, (uint8_t *)&aRxBuffer, 1);   //å†å¼€å¯æ¥æ”¶ä¸­æ–­
+	HAL_UART_Receive_IT(&huart1, (uint8_t *)&aRxBuffer, 1);   //ÔÙ¿ªÆô½ÓÊÕÖĞ¶Ï
 }
 
 /* USER CODE END 4 */
